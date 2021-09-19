@@ -1,0 +1,22 @@
+{
+  "tasks": [
+    {
+      "id": 1,
+      "title": "React",
+      "description": "React JS",
+      "status": 0
+    },
+    {
+      "id": 2,
+      "title": "Nest",
+      "description": "Nest JS",
+      "status": 1
+    },
+    {
+      "id": 3,
+      "title": "Redux",
+      "description": "Redux Saga",
+      "status": 2
+    }
+  ]
+}
