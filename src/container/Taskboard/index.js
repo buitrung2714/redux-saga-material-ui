@@ -16,8 +16,8 @@ class Taskboard extends Component {
 
   componentDidMount() {
     const { taskCreators } = this.props;
-    const { fetchTaskListRequest } = taskCreators;
-    fetchTaskListRequest();
+    const { fetchTaskList } = taskCreators;
+    fetchTaskList();
   }
 
   renderForm() {

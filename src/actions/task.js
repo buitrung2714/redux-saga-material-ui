@@ -17,16 +17,16 @@ export const fetchTaskSuccess = (data) => {
 export const fetchTaskListFailed = (err) => {
   return {
     type: Type.FETCH_TASK_FAILED,
-    payload: err,
+    payload: { err },
   };
 };
 
-export const fetchTaskListRequest = () => {
-  return (dispatch) => {
-    dispatch(fetchTaskList());
-    taskApis
-      .getList()
-      .then((data) => dispatch(fetchTaskSuccess(data)))
-      .catch((err) => dispatch(fetchTaskListFailed(err)));
-  };
-};
+// export const fetchTaskListRequest = () => {
+//   return (dispatch) => {
+//     dispatch(fetchTaskList());
+//     taskApis
+//       .getList()
+//       .then((data) => dispatch(fetchTaskSuccess(data)))
+//       .catch((err) => dispatch(fetchTaskListFailed(err)));
+//   };
+// };

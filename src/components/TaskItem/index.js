@@ -26,7 +26,7 @@ class Tasklist extends Component {
             return (
               <Card key={id} className={classes.card}>
                 <CardContent>
-                  <Grid container justify="space-between">
+                  <Grid container justifyContent="space-between">
                     <Grid item md={8}>
                       <Typography component="h1">{title}</Typography>
                     </Grid>
