@@ -8,6 +8,8 @@ import styles from "./style";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import * as taskActions from "../../actions/task";
+import * as modalActions from "../../actions/modal";
+import SearchTask from "../../components/SearchTask";
 
 class Taskboard extends Component {
   state = {
@@ -19,6 +21,13 @@ class Taskboard extends Component {
     const { fetchTaskList } = taskCreators;
     fetchTaskList();
   }
+
+  handleChange = (e) => {
+    const { taskCreators } = this.props;
+    const { filterTaskList } = taskCreators;
+    const { value } = e.target;
+    filterTaskList(value);
+  };
 
   renderForm() {
     const { open } = this.state;
@@ -48,19 +57,32 @@ class Taskboard extends Component {
     return xhtml;
   }
 
+  renderSearch() {
+    let xhtml = null;
+    xhtml = <SearchTask handleChange={this.handleChange} />;
+    return xhtml;
+  }
+
+  openForm = () => {
+    const { modalCreators } = this.props;
+    const { showModal, changeModalTitle } = modalCreators;
+    showModal();
+    changeModalTitle("add task");
+  };
+
   render() {
     const { classes } = this.props;
-    const openForm = () => this.setState({ open: true });
     return (
       <div className={classes.taskboard}>
         <Button
           variant="contained"
           color="primary"
           className={classes.button}
-          onClick={openForm}
+          onClick={this.openForm}
         >
           <AddIcon /> Add a new task
         </Button>
+        {this.renderSearch()}
         {this.renderBoard()}
         {this.renderForm()}
       </div>
@@ -76,6 +98,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     taskCreators: bindActionCreators(taskActions, dispatch),
+    modalCreators: bindActionCreators(modalActions, dispatch),
   };
 };
 

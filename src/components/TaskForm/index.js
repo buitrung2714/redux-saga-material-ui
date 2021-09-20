@@ -1,50 +1,59 @@
-import React, { Component } from "react";
 import {
-  withStyles,
-  Dialog,
-  DialogTitle,
-  DialogContent,
-  TextField,
-  DialogActions,
+  Box,
   Button,
+  FormControl,
+  Grid,
+  Modal,
+  TextField,
+  Typography,
+  withStyles,
 } from "@material-ui/core";
+import CloseIcon from "@material-ui/icons/Clear";
+import React, { Component } from "react";
 import styles from "./style";
 
 class TaskForm extends Component {
   render() {
-    const { open, handleClose } = this.props;
+    const { open, handleClose, classes } = this.props;
     return (
-      <Dialog
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="form-dialog-title"
-      >
-        <DialogTitle id="form-dialog-title">New Task</DialogTitle>
-        <DialogContent>
-          <TextField
-            autoFocus
-            margin="dense"
-            id="name"
-            label="Email Address"
-            type="email"
-            fullWidth
-          />
-          <TextField
-            id="standard-multiline-flexible"
-            label="Multiline"
-            multiline
-            maxRows={4}
-          />
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={handleClose} color="primary">
-            Cancel
-          </Button>
-          <Button onClick={handleClose} color="primary">
-            Ok
-          </Button>
-        </DialogActions>
-      </Dialog>
+      <Modal open={open} onClose={handleClose} className={classes.modal}>
+        <Box className={classes.paper}>
+          <Box className={classes.header}>
+            <Typography variant="span" className={classes.title}>
+              New Task
+            </Typography>
+            <CloseIcon className={classes.icon} onClick={handleClose} />
+          </Box>
+          <Box className={classes.content}>
+            <FormControl>
+              <Grid container>
+                <Grid item md={12}>
+                  <TextField label="Title" fullWidth />
+                </Grid>
+                <Grid item md={12}>
+                  <TextField label="Description" fullWidth />
+                </Grid>
+                <Grid item md={12}>
+                  <Box mt={2} className={classes.boxActions}>
+                    <Button onClick={handleClose} color="primary">
+                      Cancel
+                    </Button>
+                    <Box mr={1}>
+                      <Button
+                        onClick={handleClose}
+                        color="primary"
+                        variant="contained"
+                      >
+                        Save
+                      </Button>
+                    </Box>
+                  </Box>
+                </Grid>
+              </Grid>
+            </FormControl>
+          </Box>
+        </Box>
+      </Modal>
     );
   }
 }

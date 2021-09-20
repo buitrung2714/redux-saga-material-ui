@@ -1,4 +1,3 @@
-import * as taskApis from "../apis/task";
 import * as Type from "../constants/task";
 
 export const fetchTaskList = () => {
@@ -21,12 +20,16 @@ export const fetchTaskListFailed = (err) => {
   };
 };
 
-// export const fetchTaskListRequest = () => {
-//   return (dispatch) => {
-//     dispatch(fetchTaskList());
-//     taskApis
-//       .getList()
-//       .then((data) => dispatch(fetchTaskSuccess(data)))
-//       .catch((err) => dispatch(fetchTaskListFailed(err)));
-//   };
-// };
+export const filterTaskList = (keywords) => {
+  return {
+    type: Type.FILTER_TASK,
+    payload: { keywords },
+  };
+};
+
+export const filterTaskListSuccess = (dataFiltered) => {
+  return {
+    type: Type.FILTER_TASK_SUCCESS,
+    payload: { dataFiltered },
+  };
+};
