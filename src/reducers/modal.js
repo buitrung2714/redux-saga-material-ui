@@ -16,6 +16,8 @@ const reducer = (state = initialState, action) => {
     case Type.HIDE_MODAL:
       return {
         ...state,
+        title: "",
+        component: null,
         showModal: false,
       };
     case Type.CHANGE_MODAL_TITLE:
@@ -24,7 +26,7 @@ const reducer = (state = initialState, action) => {
         ...state,
         title,
       };
-    case Type.HIDE_MODAL:
+    case Type.CHANGE_MODAL_CONTENT:
       const { component } = action.payload;
       return {
         ...state,

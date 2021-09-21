@@ -1,15 +1,15 @@
 import { Button, Grid, withStyles } from "@material-ui/core";
 import AddIcon from "@material-ui/icons/Add";
 import React, { Component } from "react";
-import TaskForm from "../../components/TaskForm";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import * as modalActions from "../../actions/modal";
+import * as taskActions from "../../actions/task";
+import SearchTask from "../../components/SearchTask";
+import TaskForm from "../TaskForm";
 import Tasklist from "../../components/Tasklist";
 import { STATUS_LIST } from "../../constants";
 import styles from "./style";
-import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
-import * as taskActions from "../../actions/task";
-import * as modalActions from "../../actions/modal";
-import SearchTask from "../../components/SearchTask";
 
 class Taskboard extends Component {
   state = {
@@ -28,16 +28,6 @@ class Taskboard extends Component {
     const { value } = e.target;
     filterTaskList(value);
   };
-
-  renderForm() {
-    const { open } = this.state;
-
-    const handleClose = () => this.setState({ open: false });
-
-    let xhtml = null;
-    xhtml = <TaskForm handleClose={handleClose} open={open} />;
-    return xhtml;
-  }
 
   renderBoard() {
     const { listTask } = this.props;
@@ -65,9 +55,10 @@ class Taskboard extends Component {
 
   openForm = () => {
     const { modalCreators } = this.props;
-    const { showModal, changeModalTitle } = modalCreators;
+    const { showModal, changeModalTitle, changeModalContent } = modalCreators;
     showModal();
     changeModalTitle("add task");
+    changeModalContent(<TaskForm />);
   };
 
   render() {
@@ -84,7 +75,6 @@ class Taskboard extends Component {
         </Button>
         {this.renderSearch()}
         {this.renderBoard()}
-        {this.renderForm()}
       </div>
     );
   }

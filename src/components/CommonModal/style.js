@@ -1,4 +1,4 @@
-const styles = (theme) => ({
+const style = (theme) => ({
   modal: {
     display: "flex",
     padding: theme.spacing(1),
@@ -9,10 +9,6 @@ const styles = (theme) => ({
     width: 400,
     backgroundColor: theme.palette.background.paper,
     boxShadow: theme.shadows[5],
-  },
-  boxActions: {
-    display: "flex",
-    flexDirection: "row-reverse",
   },
   header: {
     display: "flex",
@@ -35,4 +31,4 @@ const styles = (theme) => ({
   },
 });
 
-export default styles;
+export default style;

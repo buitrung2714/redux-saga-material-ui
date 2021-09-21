@@ -17,6 +17,48 @@
       "title": "Redux",
       "description": "Redux Saga",
       "status": 2
+    },
+    {
+      "title": "Learn GraphQL",
+      "description": "GraphQL",
+      "status": 0,
+      "id": 4
+    },
+    {
+      "title": "Learn TypeScript",
+      "description": "TypeScript",
+      "status": 0,
+      "id": 5
+    },
+    {
+      "title": "Learn English",
+      "description": "English",
+      "status": 0,
+      "id": 6
+    },
+    {
+      "title": "Learn SQL",
+      "description": "SQL",
+      "status": 0,
+      "id": 7
+    },
+    {
+      "title": "Learn Next",
+      "description": "Next",
+      "status": 0,
+      "id": 8
+    },
+    {
+      "title": "Learn Swagger",
+      "description": "Swagger",
+      "status": 0,
+      "id": 9
+    },
+    {
+      "title": "Learn Iot",
+      "description": "Iot",
+      "status": 0,
+      "id": 10
     }
   ]
 }

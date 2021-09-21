@@ -31,6 +31,22 @@ const reducer = (state = initialState, action) => {
         ...state,
         listTask: dataFiltered,
       };
+    case Type.ADD_TASK_REQUEST:
+      return {
+        ...state,
+      };
+    case Type.ADD_TASK_SUCCESS:
+      const { data_add } = action.payload;
+      return {
+        ...state,
+        listTask: [data_add].concat(state.listTask),
+      };
+    case Type.ADD_TASK_FAILED:
+      const { error } = action.payload;
+      toastError(error);
+      return {
+        ...state,
+      };
     default:
       return state;
   }
